@@ -5,7 +5,7 @@ import { FormControl,InputLabel,Input } from '@mui/material';
 import Message from './Message';
 function App() {
   const [input,setInput]=useState('');
-  const [messages,setMessages]=useState(['hi','hello']);
+  const [messages,setMessages]=useState([{username:'ritish',text:'hey'},{username:'jaiswal  jii',text:'hey'},{username:'rishabh',text:'hello'}]);
   const [username,setUsername]=useState('');
   console.log(input);
   console.log(messages);
@@ -14,7 +14,7 @@ function App() {
   },[])
   const sendMessage=(event)=>{
       event.preventDefault();
-      setMessages([...messages,input]);
+      setMessages([...messages,{username:username,text:input}]);
       setInput('');
   }
   return (
@@ -30,7 +30,7 @@ function App() {
        </form>
       {
         messages.map(messages=>( 
-          <Message text={messages}/>
+          <Message username={username} message={messages}/>
           ))
       }
     </div>
